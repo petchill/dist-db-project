@@ -1,0 +1,38 @@
+{
+  "name": "dist-db-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "babel-node src/index.js",
+    "dev": "concurrently 'pm2 logs dist-db-project' 'onchange \"src/**/*.js\" -i -- pm2 startOrRestart config.yml'",
+    "build": "babel src -d dist",
+    "deploy": "gcloud builds submit --tag gcr.io/dist-db-project/blogdotme && gcloud run deploy --image gcr.io/dist-db-project/blogdotme --platform managed"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/petchill/dist-db-project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/petchill/dist-db-project/issues"
+  },
+  "homepage": "https://github.com/petchill/dist-db-project#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.0",
+    "@babel/node": "^7.8.7",
+    "@babel/preset-env": "^7.9.0"
+  },
+  "dependencies": {
+    "concurrently": "^5.1.0",
+    "core-js": "^3.6.4",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "onchange": "^6.1.0",
+    "pm2": "^4.2.3"
+  }
+}
