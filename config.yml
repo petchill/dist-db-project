@@ -12,6 +12,5 @@ apps:
       NODE_ENV: development
       PORT: 3300
       GOOGLE_APPLICATION_CREDENTIALS: /Users/songpon/dist-db-project/dist-db-project-5017775c524e.json
-      GOOGLE_STORAGE_BUCKET_ID: youpin-widget-staging
-      POSTMARK_API_TOKEN: 8b0cd0e0-bde7-41ba-bcbf-678a2363402c
-      POSTMARK_FROM: rapee@boonmeelab.com
+      GOOGLE_STORAGE_BUCKET_ID: dist-db-project
+      MONGODB: mongodb+srv://Petchill:pe111333@youpin-0iyxk.gcp.mongodb.net/dist-db-project
