@@ -4,7 +4,7 @@ const { Schema } = mongoose;
 const { ObjectId } = Schema; 
 
 const userSchema = new Schema({
-  username: { type: String, require: true},
+  username: { type: String, require: true, unique: true},
   password: { type: String, require: true},
   room_id: { type: [ObjectId] },
   created_at: Date,

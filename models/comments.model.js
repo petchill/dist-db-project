@@ -5,6 +5,7 @@ const { ObjectId } = Schema;
 
 const commentSchema = new Schema({
   owner_id: { type: ObjectId, ref: 'users', required: true},
+  owner_name: { type: String, ref: 'users', required: true},
   room_id: { type: ObjectId, ref: 'rooms', required: true},
   comment_describe: { type: String, requires: true },
   comment_replies: { type: [ObjectId], ref: 'comments' },

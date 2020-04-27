@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { rooms_model, tags_model } from '../../models'
+import { rooms_model, tags_model, comments_model } from '../../models'
 import Joi from '@hapi/joi';
 import {Promise} from "bluebird";
 Joi.objectId = require('joi-objectid')(Joi)
@@ -9,9 +9,10 @@ const router = new Router();
 const joi_option = { abortEarly: true };
 const roomSchema = Joi.object().keys({
   owner_id: Joi.objectId().required(),
-  room_head: Joi.string().required(),
+  owner_name: Joi.string().required(),
+  room_topic: Joi.string().required(),
   room_describe: Joi.string(),
-  room_tag: Joi.array().items(Joi.string())
+  room_tags: Joi.array().items(Joi.string())
 });
 
 async function addTag(room_id, tagName) {
@@ -37,17 +38,31 @@ async function addTag(room_id, tagName) {
   }
 }
 
-router.get('/', (req, res) => {
+// GET
+router.get('/', async (req, res) => {
   try {
-    const data = rooms_model.find({});
+    const data = await rooms_model.find({}).sort({createdAt:-1});
     console.log(data);
+    res.status(200);
+    res.json({ ok: true, status: 200, data: data });
   } catch (error) {
     console.error('Error from mongoDB : ', error);
     res.status(400);
     res.json({ ok: false, status: 400, error: error });
   }
-  res.status(200);
-  res.json({ ok: true, status: 200, data: data });
+});
+
+// GET BY ID
+router.get('/:id', async (req, res) => {
+  try {
+    const data = await rooms_model.findById(req.params.id);
+    res.status(200);
+    res.json({ ok: true, status: 200, data: data})
+  } catch (error) {
+    console.error(error)
+    res.status(400);
+    res.json({ ok: false, status: 400, error: error });
+  }
 });
 
 router.post('/', async (req, res) => {

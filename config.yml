@@ -1,8 +1,8 @@
 apps:
   - name: dist-db-project
-    interpreter: babel-node
+    # interpreter: babel-node
     script: src/index.js
-    args: []
+    node_args: '-r esm'
     no-daemon: false
     log_date_format: YYYY-MM-DD HH:mm:ss
     watch: false
@@ -14,3 +14,5 @@ apps:
       GOOGLE_APPLICATION_CREDENTIALS: /Users/songpon/dist-db-project/dist-db-project-5017775c524e.json
       GOOGLE_STORAGE_BUCKET_ID: dist-db-project
       MONGODB: mongodb+srv://Petchill:pe111333@youpin-0iyxk.gcp.mongodb.net/dist-db-project
+      JWT_SECRET: /m0ThiXUCkyRKVWlF37+0g==
+      JWT_ALGORITHM: 'HS256'
