@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "babel-node src/index.js",
-    "dev": "concurrently 'pm2 logs dist-db-project' 'onchange \"src/**/*.js\" -i -- pm2 startOrRestart config.yml'",
+    "dev": "pm2 startOrRestart config.yml && pm2 logs dist-db-project ",
     "build": "babel src -d dist",
     "deploy": "gcloud builds submit --tag gcr.io/dist-db-project/blogdotme && gcloud run deploy --image gcr.io/dist-db-project/blogdotme --platform managed"
   },
