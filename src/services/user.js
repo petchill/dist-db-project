@@ -2,6 +2,7 @@ import { Router } from 'express';
 import { users_model } from '../../models'
 import Joi from '@hapi/joi';
 import jwt from 'jsonwebtoken';
+require('dotenv').config()
 Joi.objectId = require('joi-objectid')(Joi);
 
 const router = new Router();

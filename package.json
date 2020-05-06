@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "babel-node src/index.js",
+    "start": "node -r esm src/index.js",
     "dev": "pm2 startOrRestart config.yml && pm2 logs dist-db-project ",
     "build": "babel src -d dist",
     "deploy": "gcloud builds submit --tag gcr.io/dist-db-project/blogdotme && gcloud run deploy --image gcr.io/dist-db-project/blogdotme --platform managed"
@@ -34,6 +34,7 @@
     "concurrently": "^5.1.0",
     "core-js": "^3.6.4",
     "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
     "esm": "^3.2.25",
     "esn": "^2.0.14",
     "express": "^4.17.1",

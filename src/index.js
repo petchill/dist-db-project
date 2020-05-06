@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import serviceRouter from './services';
 import mongoose from 'mongoose';
+require('dotenv').config()
 
 const app = express();
 
@@ -17,7 +18,8 @@ mongoose.connect(process.env.MONGODB, {
   useFindAndModify: false
 });
 
-const port = process.env.PORT || 3200;
+console.log('this is port : ', process.env.PORT);
+const port = process.env.PORT || 3300;
 app.listen(port, () => {
   console.log('app is listen on port: ', port);
 })

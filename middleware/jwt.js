@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import jwt from 'jsonwebtoken';
+require('dotenv').config()
 
 const router = new Router();
 
